@@ -33,7 +33,7 @@ void MClock::Life(float t)
 
 	this->date_s =
 		IntToString(timeinfo.tm_mday) + "." +
-		IntToString(timeinfo.tm_mon) + "." +
+		IntToString(timeinfo.tm_mon + 1) + "." +
 		IntToString(timeinfo.tm_year + 1900);
 
 	this->time_s =
