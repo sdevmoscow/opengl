@@ -53,6 +53,7 @@ void MClock::Draw()
 			this->radius);
 
 	circle->Draw();
+	delete circle;
 
 	const float step = float(2 * M_PI / 12);
 	const float L1 = 0.9f;
@@ -90,6 +91,7 @@ void MClock::Draw()
 	ellipse->AddColor(arrowColor);
 	ellipse->AddFilled(false);
 	ellipse->Draw();
+	delete ellipse;
 
 	int n = 0;
 	for (float angle = 0; angle < float(2 * M_PI); angle += step, n++)
@@ -104,6 +106,7 @@ void MClock::Draw()
 			float _dx = n > 9 ? -0.01f : 0.0f;
 			GText *text = factory.CreateText(Point2D(x2+DX+_dx,y2+DY), std::to_string(n));
 			text->Draw();
+			delete text;
 		}
 	}
 
@@ -121,16 +124,19 @@ void MClock::Draw()
 	GText *text = factory.CreateText(Point2D(this->pos_x-0.06f, this->pos_y - this->radius* L1 * 1.6f), this->place);
 	text->AddColor(arrowColor);
 	text->Draw();
+	delete text;
 
 	text = factory.CreateText(Point2D(this->pos_x - 0.21f, this->pos_y - this->radius* L1 * 1.9f), this->date_s);
 	text->AddColor(arrowColor);
 	text->AddTextSize(13);
 	text->Draw();
+	delete text;
 
 	text = factory.CreateText(Point2D(this->pos_x + 0.03f, this->pos_y - this->radius* L1 * 1.9f), this->time_s);
 	text->AddColor(arrowColor);
 	text->AddTextSize(11);
 	text->Draw();
+	delete text;
 
 }
 
@@ -153,6 +159,7 @@ void MClock::Arrow(GShapeFactory *factory, float angle, float length, float widt
 
 	poly->AddFilled(false);
 	poly->Draw();
+	delete poly;
 
 	glPopMatrix();
 }
@@ -168,6 +175,7 @@ void MClock::ThinArrow(GShapeFactory *factory, float angle, float length, GColor
 
 	line->AddColor(color);
 	line->Draw();
+	delete line;
 
 	glPopMatrix();
 }

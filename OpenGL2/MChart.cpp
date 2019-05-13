@@ -46,6 +46,7 @@ void MChart::Draw()
 	poly->AddPoint(pos_x + width, pos_y + height);
 	poly->AddPoint(pos_x, pos_y + height);
 	poly->Draw();
+	delete poly;
 
 	// сетка - вертикальные линии
 	for (int i = 1; i <= num_x; i++)
@@ -55,6 +56,7 @@ void MChart::Draw()
 		line->AddColor(style.color);
 		line->AddLineDashed(3);
 		line->Draw();
+		delete line;
 
 		// подписи по оси x
 		int val = t - num_x + i;
@@ -64,6 +66,7 @@ void MChart::Draw()
 			GText *text = factory.CreateText(Point2D(x - 0.008f + _dx, pos_y - 0.035f), std::to_string(val));
 			text->AddTextSize(13);
 			text->Draw();
+			delete text;
 		}
 	}
 
@@ -77,11 +80,13 @@ void MChart::Draw()
 			line->AddColor(style.color);
 			line->AddLineDashed(3);
 			line->Draw();
+			delete line;
 		}
 
 		GText *text = factory.CreateText(Point2D(pos_x - 0.03f, y-0.006f), std::to_string(i));
 		text->AddTextSize(13);
 		text->Draw();
+		delete text;
 	}
 
 	// линия данных
@@ -95,6 +100,7 @@ void MChart::Draw()
 		GLine *line = factory.CreateLine(Point2D(x, y), Point2D(px, py));
 		line->AddColor(color);
 		line->Draw();
+		delete line;
 		py = y;
 		px = x;
 	}
